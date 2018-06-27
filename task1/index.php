@@ -11,8 +11,8 @@ $mysql = new Mysql();
 ini_set('max_execution_time', 1800);
 
 //$result = $mysql->insert();
-//$result = $mysql->select();
-$result = $mysql->drop();
+//$result = $mysql->selectAll();
+//$result = $mysql->dropCreate();
 
 require_once TEMPLATES.TEMPLATE;
 ?>

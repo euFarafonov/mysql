@@ -1,0 +1,23 @@
+FLUSH STATUS;
+SELECT * FROM test WHERE id = 900000;
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+EXPLAIN SELECT * FROM test WHERE id = 900000;
+
+FLUSH STATUS;
+SELECT * FROM test WHERE name = ;
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+EXPLAIN SELECT * FROM test WHERE name = ;
+
+FLUSH STATUS;
+SELECT * FROM test WHERE descrip = ;
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+EXPLAIN SELECT * FROM test WHERE descrip = ;
+
+================================================
+CREATE INDEX index_id ON test (id) USING BTREE;
+===============================================
+ALTER TABLE имя_таблицы ADD PRIMARY KEY (список_столбцов);
+ALTER TABLE имя_таблицы ADD UNIQUE имя_индекса (список_столбцов);
+ALTER TABLE имя_таблицы ADD INDEX имя_индекса (список_столбцов);
+ALTER TABLE имя_таблицы ADD FULLTEXT имя_индекса (список_столбцов);
+===============================================

@@ -6,9 +6,9 @@ class Sql
     public function insert()
     {      
         $id = 1;
+        echo ('START : '.date("h:i:s").'<br>');
         
         for ($i = 1; $i <= 1000; $i++) {
-            echo ($i.' : '.date("h:i:s").'<br>');
             $str = '';
             for ($j = 1; $j <=1000; $j++, $id++) {
                 $hash = md5('hello'.$id);
@@ -20,12 +20,12 @@ class Sql
             $query = "INSERT INTO test (id,name,descrip) VALUES ".$str;
             $result = $this->pdo->exec($query);
         }
-        echo 'END';
+        echo ('END : '.date("h:i:s").'<br>');
         
         return $result;
     }
     
-    public function select()
+    public function selectAll()
     {      
         $query = "SELECT COUNT(*) FROM test";
         //$query = "SELECT COUNT(DISTINCT `id`) FROM test";
@@ -34,9 +34,12 @@ class Sql
         return $result->fetch(PDO::FETCH_ASSOC);
     }
     
-    public function drop()
+    public function dropCreate()
     {      
         $query = "DROP TABLE test";
+        $result = $this->pdo->query($query);
+        
+        $query = "CREATE TABLE test (id INT NOT NULL, name VARCHAR(255) NOT NULL, descrip TEXT NOT NULL)";
         $result = $this->pdo->query($query);
         
         return $result;
