@@ -2,7 +2,7 @@
 // PATH
 define('PATH', './');
 // TITLE
-define('TITLE', 'MySQL - task 1');
+define('TITLE', 'SQL - task 1');
 // templates dir
 define('TEMPLATES', PATH.'templates/');
 // active template

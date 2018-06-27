@@ -1,0 +1,37 @@
+CREATE TABLE tableA (id INT NOT NULL, name VARCHAR(20) NOT NULL);
+CREATE TABLE tableB (id INT NOT NULL, name VARCHAR(20) NOT NULL);
+
+INSERT INTO tableA (id, name) VALUES (1, 'Pirate'), (2, 'Monkey'), (3, 'Ninja'), (4, 'Spaghetti');
+INSERT INTO tableB (id, name) VALUES (1, 'Rutabaga'), (2, 'Pirate'), (3, 'Darth Vader'), (4, 'Ninja');
+
+=============================
+1.SELECT * FROM tableA INNER JOIN tableB ON tableA.name = tableB.name;
+
+2.#SELECT * FROM tableA FULL OUTER JOIN tableB ON tableA.name = tableB.name;
+SELECT * FROM tableA LEFT JOIN tableB ON tableA.name = tableB.name UNION SELECT * FROM tableA RIGHT JOIN tableB ON tableA.name = tableB.name;
+
+3.SELECT * FROM tableA LEFT OUTER JOIN tableB ON tableA.name = tableB.name;
+4.SELECT * FROM tableA LEFT OUTER JOIN tableB ON tableA.name = tableB.name WHERE tableB.id IS null;
+
+5.#SELECT * FROM tableA FULL OUTER JOIN tableB ON tableA.name = tableB.name WHERE tableA.id IS null OR tableB.id IS null;
+SELECT * FROM tableA LEFT JOIN tableB ON tableA.name = tableB.name WHERE tableA.id IS null OR tableB.id IS null UNION SELECT * FROM tableA RIGHT JOIN tableB ON tableA.name = tableB.name WHERE tableA.id IS null OR tableB.id IS null;
+
+6.SELECT * FROM tableA CROSS JOIN tableB;
+=============================
+1.EXPLAIN SELECT * FROM tableA INNER JOIN tableB ON tableA.name = tableB.name;
+
+2.#EXPLAIN SELECT * FROM tableA FULL OUTER JOIN tableB ON tableA.name = tableB.name;
+EXPLAIN SELECT * FROM tableA LEFT JOIN tableB ON tableA.name = tableB.name UNION SELECT * FROM tableA RIGHT JOIN tableB ON tableA.name = tableB.name;
+
+3.EXPLAIN SELECT * FROM tableA LEFT OUTER JOIN tableB ON tableA.name = tableB.name;
+4.EXPLAIN SELECT * FROM tableA LEFT OUTER JOIN tableB ON tableA.name = tableB.name WHERE tableB.id IS null;
+
+5.#EXPLAIN SELECT * FROM tableA FULL OUTER JOIN tableB ON tableA.name = tableB.name WHERE tableA.id IS null OR tableB.id IS null;
+EXPLAIN SELECT * FROM tableA LEFT JOIN tableB ON tableA.name = tableB.name WHERE tableA.id IS null OR tableB.id IS null UNION SELECT * FROM tableA RIGHT JOIN tableB ON tableA.name = tableB.name WHERE tableA.id IS null OR tableB.id IS null;
+
+6.EXPLAIN SELECT * FROM tableA CROSS JOIN tableB;
+=============================
+CREATE INDEX index_name ON tableA (name);
+CREATE INDEX index_name ON tableB (name);
+=============================
+

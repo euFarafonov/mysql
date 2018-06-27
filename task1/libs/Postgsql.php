@@ -1,5 +1,5 @@
 <?php
-class Pgsql extends Sql
+class Postgsql extends Sql
 {
     public function __construct()
     {
@@ -12,8 +12,6 @@ class Pgsql extends Sql
             echo ERROR_CONNECT.'<br>'.$e->getMessage();
             exit;
         }
-        
-        $this->table = TABLE_PG;
     }
 }
 ?>
